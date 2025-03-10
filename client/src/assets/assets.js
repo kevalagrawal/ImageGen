@@ -17,6 +17,7 @@ import lock_icon from './lock_icon.svg'
 import cross_icon from './cross_icon.svg'
 import star_group from './star_group.png'
 import credit_star from './credit_star.svg'
+import please from './please.jpg'
 import profile_icon from './profile_icon.png'
 import razorpay_logo from './razorpay_logo.png'
 import stripe_logo from './stripe_logo.png'
@@ -55,6 +56,7 @@ export const assets = {
     download6,
     download7,
     download9,
+    please,
 }
 
 export const stepsData = [

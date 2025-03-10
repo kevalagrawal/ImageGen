@@ -7,7 +7,7 @@ const Result = () => {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [isImageLoaded, setIsImageLoaded] = useState(false)
-  const [image, setImage] = useState(assets.sample_img_1)
+  const [image, setImage] = useState(assets.please)
   const textareaRef = useRef(null)
 
   const { generateImage } = useContext(AppContext)
