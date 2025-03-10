@@ -6,9 +6,9 @@ import userModel from '../models/userModel.js';
 
 // List of API keys to switch between
 const API_KEYS = [
+  process.env.CLIPDROP_API,
   process.env.CLIPDROP_API_1,
-  process.env.CLIPDROP_API_2,
-  process.env.CLIPDROP_API_3
+  process.env.CLIPDROP_API_2
 ];
 
 async function callClipdropAPI(prompt) {
