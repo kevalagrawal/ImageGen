@@ -12,11 +12,9 @@ await connectDB()
 
 // Intialize Middlewares
 app.use(express.json())
-const allowedOrigins = ['https://globaltrekc.onrender.com'];
-
 app.use(cors({
-    origin: allowedOrigins,
-    methods: 'GET,POST,PUT,DELETE',
+    origin: 'https://globaltrekc.onrender.com',  // Allow frontend
+    methods: 'GET,POST,PUT,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type,Authorization'
 }));
 
