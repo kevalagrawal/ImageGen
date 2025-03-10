@@ -98,7 +98,7 @@ const Header = () => {
     animate={{ opacity: 1 }}
     transition={{ delay: 1, duration: 1 }}
 >
-    {Array.from({ length: 6 }, (_, index) => (
+    {Array.from({ length: 5 }, (_, index) => (
         <motion.img
             className="rounded-lg hover:scale-110 transition-all duration-300 cursor-pointer shadow-md max-sm:w-12"
             width={80}
