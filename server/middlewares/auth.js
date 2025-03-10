@@ -3,7 +3,8 @@ import jwt from 'jsonwebtoken';
 // User authentication middleware
 const authUser = async (req, res, next) => {
     // Extract the token from headers
-    const { token } = req.headers;
+    const token = req.headers["token"] || req.headers["authorization"];
+
 
     // Check if the token is missing
     if (!token) {

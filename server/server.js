@@ -12,11 +12,15 @@ await connectDB()
 
 // Intialize Middlewares
 app.use(express.json())
-app.use(cors({
-    origin: 'https://globaltrekc.onrender.com',  // Allow frontend
-    methods: 'GET,POST,PUT,DELETE,OPTIONS',
-    allowedHeaders: 'Content-Type,Authorization'
-}));
+app.use(
+    cors({
+      origin: 'https://globaltrekc.onrender.com', // Use the array
+      methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Include OPTIONS for preflight requests
+      allowedHeaders: ["Content-Type", "Authorization", "token"], // Change from string to array
+      credentials: true, // Allow cookies if needed
+    })
+  );
+  
 
 // API routes
 app.use('/api/user',userRouter)
