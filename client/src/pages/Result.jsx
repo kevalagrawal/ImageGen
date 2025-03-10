@@ -43,13 +43,15 @@ const Result = () => {
   }
 
   return (
-    <motion.form onSubmit={onSubmitHandler} className='flex flex-col min-h-[90vh] justify-center items-center'
+    <motion.form
+      onSubmit={onSubmitHandler}
+      className='flex flex-col h-screen w-screen justify-center items-center overflow-hidden'
       initial={{ opacity: 0.2, y: 100 }}
       transition={{ duration: 1 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
     >
-      <div>
+      <div className='max-w-sm'>
         <div className='relative'>
           <img className='max-w-sm rounded' src={image} alt="Generated Image" />
           <span className={`absolute bottom-0 left-0 h-1 bg-blue-500 ${loading ? 'w-full transition-all duration-[10s]' : 'w-0'}`} />
@@ -64,8 +66,8 @@ const Result = () => {
             onChange={handleInputChange}
             value={input}
             className='w-full bg-transparent outline-none p-3 text-white placeholder-gray-300 rounded-md resize-none overflow-auto'
-            rows={1} // Start with one row
-            style={{ maxHeight: '200px' }} // Allow scrolling after max height
+            rows={1}
+            style={{ maxHeight: '200px' }} 
             placeholder='Describe what you want to generate...'
           />
           <button type='submit' className='bg-zinc-900 px-10 sm:px-16 py-3 mt-3 rounded-md'>Generate</button>
