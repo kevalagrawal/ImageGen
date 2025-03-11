@@ -18,6 +18,7 @@ import cross_icon from './cross_icon.svg'
 import star_group from './star_group.png'
 import credit_star from './credit_star.svg'
 import please from './please.jpg'
+import dhruv from './dhruv1.jpg'
 import profile_icon from './profile_icon.png'
 import razorpay_logo from './razorpay_logo.png'
 import stripe_logo from './stripe_logo.png'
@@ -37,6 +38,7 @@ export const assets = {
     instagram_icon,
     twitter_icon,
     star_icon,
+    dhruv,
     rating_star,
     sample_img_1,
     sample_img_2,
@@ -86,7 +88,7 @@ export const stepsData = [
         text: `Image_Gen has been a game-changer for my projects. The seamless background removal allows me to create clean, professional designs in seconds without relying on complex software.`
     },
     {
-        image: profile_img_2,
+        image: dhruv,
         name: 'Dhruv Soni',
         role: 'Frontend Developer',
         stars: 5,
