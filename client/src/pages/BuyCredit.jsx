@@ -53,7 +53,7 @@ const BuyCredit = () => {
       // Hide the loading state after 0.5s regardless of request completion
       setTimeout(() => {
         setLoadingStates((prev) => ({ ...prev, [planId]: false }));
-      }, 500);
+      }, 1000);
   
       const { data } = await axios.post(backendUrl + '/api/user/pay-razor', { planId }, { headers: { token } });
       if (data.success) initPay(data.order);
@@ -70,7 +70,7 @@ const BuyCredit = () => {
       // Hide the loading state after 0.5s regardless of request completion
       setTimeout(() => {
         setLoadingStates((prev) => ({ ...prev, [planId]: false }));
-      }, 500);
+      }, 1000);
   
       const { data } = await axios.post(backendUrl + '/api/user/pay-stripe', { planId }, { headers: { token } });
       if (data.success) {
