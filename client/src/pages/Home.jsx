@@ -7,19 +7,12 @@ import GenerateBtn from '../components/GenerateBtn'
 
 const Home = () => {
   return (
-    <div 
-      className="w-screen h-screen overflow-hidden flex flex-col"
-      style={{
-        msOverflowStyle: 'none',  // Hide scrollbar for IE and Edge
-        scrollbarWidth: 'none'    // Hide scrollbar for Firefox
-      }}
-    >
-      {/* Main Content */}
-      <Header />
-      <Steps />
-      <Description />
-      <Testimonials />
-      <GenerateBtn />
+    <div>
+        <Header />
+        <Steps />
+        <Description />
+        <Testimonials />
+        <GenerateBtn />
     </div>
   )
 }
