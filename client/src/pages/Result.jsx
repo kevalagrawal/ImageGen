@@ -43,41 +43,84 @@ const Result = () => {
   }
 
   return (
-    <motion.form onSubmit={onSubmitHandler} className='flex flex-col min-h-[90vh] justify-center items-center'
+    <motion.form
+      onSubmit={onSubmitHandler}
+      className="flex flex-col min-h-[90vh] justify-center items-center relative overflow-hidden"
       initial={{ opacity: 0.2, y: 100 }}
       transition={{ duration: 1 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
     >
-      <div>
-        <div className='relative'>
-          <img className='max-w-sm rounded' src={image} alt="Generated Image" />
-          <span className={`absolute bottom-0 left-0 h-1 bg-blue-500 ${loading ? 'w-full transition-all duration-[10s]' : 'w-0'}`} />
+      {/* Loading Overlay */}
+      {loading && (
+        <div className="absolute top-0 left-0 w-full h-full bg-black/30 backdrop-blur-md flex justify-center items-center z-10">
+          <motion.div
+            className="text-white text-xl font-bold"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ repeat: Infinity, duration: 1 }}
+          >
+            <div className="flex flex-col items-center gap-3">
+              <div className="w-10 h-10 border-t-4 border-white border-solid rounded-full animate-spin"></div>
+              Generating...
+            </div>
+          </motion.div>
         </div>
-        <p className={!loading ? 'hidden' : ''}>Loading.....</p>
+      )}
+
+      <div>
+        <div className="relative">
+          <img className="max-w-sm rounded" src={image} alt="Generated Image" />
+          <span
+            className={`absolute bottom-0 left-0 h-1 bg-blue-500 ${
+              loading ? 'w-full transition-all duration-[10s]' : 'w-0'
+            }`}
+          />
+        </div>
       </div>
 
       {!isImageLoaded && (
-        <div className='flex flex-col w-full max-w-xl bg-neutral-500 text-white text-sm p-3 mt-10 rounded-lg'>
+        <div className="flex flex-col w-full max-w-xl bg-neutral-500 text-white text-sm p-3 mt-10 rounded-lg">
           <textarea
             ref={textareaRef}
             onChange={handleInputChange}
             value={input}
-            className='w-full bg-transparent outline-none p-3 text-white placeholder-gray-300 rounded-md resize-none overflow-auto'
-            rows={1} // Start with one row
-            style={{ maxHeight: '200px' }} // Allow scrolling after max height
-            placeholder='Describe what you want to generate...'
+            className="w-full bg-transparent outline-none p-3 text-white placeholder-gray-300 rounded-md resize-none overflow-auto"
+            rows={1}
+            style={{ maxHeight: '200px' }}
+            placeholder="Describe what you want to generate..."
+            disabled={loading}
           />
-          <button type='submit' className='bg-zinc-900 px-10 sm:px-16 py-3 mt-3 rounded-md'>Generate</button>
+          <button
+            type="submit"
+            className={`px-10 sm:px-16 py-3 mt-3 rounded-md ${
+              loading
+                ? 'bg-gray-700 cursor-not-allowed'
+                : 'bg-zinc-900 hover:bg-zinc-800'
+            }`}
+            disabled={loading}
+          >
+            {loading ? 'Generating...' : 'Generate'}
+          </button>
         </div>
       )}
 
       {isImageLoaded && (
-        <div className='flex gap-2 flex-wrap justify-center text-white text-sm p-0.5 mt-10 rounded-full'>
-          <p onClick={handleGenerateAnother} className='bg-transparent border border-zinc-900 text-black px-8 py-3 rounded-full cursor-pointer'>
+        <div className="flex gap-2 flex-wrap justify-center text-white text-sm p-0.5 mt-10 rounded-full">
+          <p
+            onClick={handleGenerateAnother}
+            className="bg-transparent border border-zinc-900 text-black px-8 py-3 rounded-full cursor-pointer"
+          >
             Generate Another
           </p>
-          <a href={image} download className='bg-zinc-900 px-10 py-3 rounded-full cursor-pointer'>Download</a>
+          <a
+            href={image}
+            download
+            className="bg-zinc-900 px-10 py-3 rounded-full cursor-pointer"
+          >
+            Download
+          </a>
         </div>
       )}
     </motion.form>
