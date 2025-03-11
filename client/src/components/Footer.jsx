@@ -1,59 +1,32 @@
 import React from 'react'
-import { assets } from '../assets/assets'
-import { delay, motion } from 'framer-motion'
 
 const Footer = () => {
   return (
-    <motion.footer
-    className="flex flex-wrap items-center justify-between gap-4 py-4 mt-20 border-t border-gray-300 px-4 sm:px-12"
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1 }}
-    viewport={{ once: true }}
->
-    {/* Logo */}
-    <motion.img
-        width={150}
-        src={assets.logo}
-        alt="GlobalTrek Logo"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.8 }}
-    />
+    <footer className="w-full bg-zinc-900 text-white py-6 mt-10">
+      <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center">
+        {/* Left Section */}
+        <div className="text-center sm:text-left">
+          <h3 className="text-lg font-semibold">GlobalTrek</h3>
+          <p className="text-gray-400 mt-1">Delivering excellence worldwide</p>
+        </div>
 
-    {/* Copyright Text */}
-    <motion.p
-        className="flex-1 border-l border-gray-400 pl-4 text-sm text-gray-500 max-sm:hidden transition-all duration-100"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 1 }}
-        whileHover={{ color: "#333", borderColor: "#666" }}
-    >
-        Copyright © 2025 GlobalTrek.com | All rights reserved.
-    </motion.p>
+        {/* Center Section */}
+        <div className="text-center mt-4 sm:mt-0">
+          <p className="text-gray-400">Contact us:</p>
+          <a 
+            href="mailto:globaltrek39@gmail.com"
+            className="text-blue-400 hover:text-blue-500 transition duration-300"
+          >
+            globaltrek39@gmail.com
+          </a>
+        </div>
 
-    {/* Social Icons */}
-    <div className="flex gap-3">
-        {[
-            { src: assets.facebook_icon, alt: "Facebook" },
-            { src: assets.twitter_icon, alt: "Twitter" },
-            { src: assets.instagram_icon, alt: "Instagram" },
-        ].map((item, index) => (
-            <motion.img
-                key={index}
-                width={35}
-                src={item.src}
-                alt={item.alt}
-                className="cursor-pointer transition-all duration-100"
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.5 + index * 0.2, duration: 0.5 }}
-                whileHover={{ scale: 1.2, filter: "brightness(1.2)" }}
-            />
-        ))}
-    </div>
-</motion.footer>
-
+        {/* Right Section */}
+        <div className="text-center sm:text-right mt-4 sm:mt-0">
+          <p className="text-gray-400">&copy; {new Date().getFullYear()} GlobalTrek. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
   )
 }
 
