@@ -30,6 +30,7 @@ const Result = () => {
   const handleGenerateAnother = () => {
     setIsImageLoaded(false)
     setInput('')
+    setImage(assets.please);
   }
 
   // Function to handle text input and enable scrolling
