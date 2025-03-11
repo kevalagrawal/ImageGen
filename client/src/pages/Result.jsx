@@ -38,8 +38,8 @@ const Result = () => {
 
     // Adjust height dynamically
     const textarea = textareaRef.current
-    textarea.style.height = 'auto' // Reset height
-    textarea.style.height = `${Math.min(textarea.scrollHeight, 200)}px` // Max height 200px, then scroll
+    textarea.style.height = 'auto'
+    textarea.style.height = `${Math.min(textarea.scrollHeight, 200)}px`
   }
 
   return (
@@ -51,27 +51,33 @@ const Result = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
     >
-      {/* Loading Overlay */}
-      {loading && (
-        <div className="absolute top-0 left-0 w-full h-full bg-black/30 backdrop-blur-md flex justify-center items-center z-10">
-          <motion.div
-            className="text-white text-xl font-bold"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ repeat: Infinity, duration: 1 }}
-          >
-            <div className="flex flex-col items-center gap-3">
-              <div className="w-10 h-10 border-t-4 border-white border-solid rounded-full animate-spin"></div>
-              Generating...
+      <div className="relative">
+        {/* Image Container */}
+        <div className="relative w-[300px] h-[300px]"> 
+          <img
+            className="w-full h-full object-cover rounded"
+            src={image}
+            alt="Generated Image"
+          />
+          {/* Loading Overlay - Matches the size of the sample image */}
+          {loading && (
+            <div className="absolute top-0 left-0 w-full h-full bg-black/30 backdrop-blur-md flex justify-center items-center rounded">
+              <motion.div
+                className="text-white text-xl font-bold"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ repeat: Infinity, duration: 1 }}
+              >
+                <div className="flex flex-col items-center gap-3">
+                  {/* Spinning loader */}
+                  <div className="w-10 h-10 border-t-4 border-white border-solid rounded-full animate-spin"></div>
+                  Generating...
+                </div>
+              </motion.div>
             </div>
-          </motion.div>
-        </div>
-      )}
-
-      <div>
-        <div className="relative">
-          <img className="max-w-sm rounded" src={image} alt="Generated Image" />
+          )}
+          {/* Progress Bar */}
           <span
             className={`absolute bottom-0 left-0 h-1 bg-blue-500 ${
               loading ? 'w-full transition-all duration-[10s]' : 'w-0'
@@ -80,6 +86,7 @@ const Result = () => {
         </div>
       </div>
 
+      {/* Input & Generate Button */}
       {!isImageLoaded && (
         <div className="flex flex-col w-full max-w-xl bg-neutral-500 text-white text-sm p-3 mt-10 rounded-lg">
           <textarea
@@ -106,6 +113,7 @@ const Result = () => {
         </div>
       )}
 
+      {/* Generate Another & Download Button */}
       {isImageLoaded && (
         <div className="flex gap-2 flex-wrap justify-center text-white text-sm p-0.5 mt-10 rounded-full">
           <p
