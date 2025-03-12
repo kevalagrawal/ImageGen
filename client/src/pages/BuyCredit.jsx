@@ -117,7 +117,7 @@ const BuyCredit = () => {
             <p className='mt-6'>
               <span className='text-3xl font-medium'>₹{item.price}</span>/ 
               <span className="line-through text-gray-400 mx-1">
-                {index === 0 ? 25 : index === 1 ? 50 : 100}
+                {index === 0 ? 25 : index === 1 ? 75 : 175}
               </span>
               {item.credits} credits
             </p>

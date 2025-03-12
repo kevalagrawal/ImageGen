@@ -19,6 +19,7 @@ import star_group from './star_group.png'
 import credit_star from './credit_star.svg'
 import please from './please.jpg'
 import dhruv from './dhruv1.jpg'
+import eye from './eye.svg'
 import camera2 from './camera2.svg'
 import logo2 from './logo2.svg'
 import profile_icon from './profile_icon.png'
@@ -36,6 +37,7 @@ import download9 from './download (9).png'
 export const assets = {
     logo,
     logo2,
+    eye,
     logo_icon,
     facebook_icon,
     instagram_icon,
@@ -112,19 +114,19 @@ export const stepsData = [
 export const plans = [
   {
     id: 'Basic',
-    price: 29,
+    price: 9,
     credits: 50,
     desc: 'Best for personal use.'
   },
   {
     id: 'Advanced',
-    price: 49,
-    credits: 100,
+    price: 29,
+    credits: 150,
     desc: 'Best for business use.'
   },
   {
     id: 'Business',
-    price: 99,
+    price: 69,
     credits: 500,
     desc: 'Best for enterprise use.'
   },
