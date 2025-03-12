@@ -9,17 +9,23 @@
     <title>Image_Gen</title>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-        if (metaThemeColor) {
-          metaThemeColor.setAttribute('content', '#D1F8EF'); // Light green color
-        } else {
+        const metaThemeColor = document.querySelector('meta[name="theme-color"]') || (() => {
           const newMetaTag = document.createElement('meta');
           newMetaTag.setAttribute('name', 'theme-color');
-          newMetaTag.setAttribute('content', '#D1F8EF'); // Light green color
           document.head.appendChild(newMetaTag);
-        }
+          return newMetaTag;
+        })();
+    
+        let colors = ['#D1F8EF', '#A1E3F9'];
+        let currentIndex = 0;
+    
+        setInterval(() => {
+          currentIndex = (currentIndex + 1) % colors.length;
+          metaThemeColor.setAttribute('content', colors[currentIndex]);
+        }, 2000); // Change color every 2 seconds
       });
     </script>
+    
     
   </head>
   <body>
