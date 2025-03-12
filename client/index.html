@@ -4,7 +4,23 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/camera3.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <!-- Theme Color -->
+  <!-- <meta name="theme-color" content="#90EE90" /> -->
     <title>Image_Gen</title>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) {
+          metaThemeColor.setAttribute('content', '#90EE90'); // Light green color
+        } else {
+          const newMetaTag = document.createElement('meta');
+          newMetaTag.setAttribute('name', 'theme-color');
+          newMetaTag.setAttribute('content', '#90EE90'); // Light green color
+          document.head.appendChild(newMetaTag);
+        }
+      });
+    </script>
+    
   </head>
   <body>
     <div id="root"></div>
