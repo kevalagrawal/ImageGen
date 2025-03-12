@@ -12,7 +12,7 @@ const Navbar = () => {
         <div className='flex items-center justify-between py-4 px-4 sm:px-6'>
             {/* Left Section */}
             <div className="flex items-center gap-1">
-                <img width={50} src={assets.eye} alt="" className="-mr-6" />
+                <img width={50} src={assets.eye} alt="" className="-mr-5" />
                 <Link to='/'>
                     <img className='w-28 sm:w-32 lg:w-40 translate-y-2' src={assets.logo2} alt="" />
                 </Link>
@@ -28,7 +28,7 @@ const Navbar = () => {
                             className='flex items-center gap-2 bg-blue-100 px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:scale-105 transition-all duration-300'
                         >
                             <img className='w-5' src={assets.credit_star} alt="" />
-                            <p className='text-xs sm:text-sm font-medium text-gray-600'>
+                            <p className='text-xs sm:text-xs font-medium text-gray-600'>
                                 Credits left: {credit}
                             </p>
                         </button>
