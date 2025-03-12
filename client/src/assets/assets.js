@@ -107,13 +107,6 @@ export const stepsData = [
         stars: 5,
         text: `I've tested multiple background removal tools, and Image_Gen stands out with its precision and consistency. It handles complex edges and fine details exceptionally well, making it my top recommendation.`
     },
-    {
-        image: profile_img_1,
-        name: 'Om Patel',
-        role: 'Backend Developer',
-        stars: 5,
-        text: `I've tested multiple background removal tools, and Image_Gen stands out with its precision and consistency. It handles complex edges and fine details exceptionally well, making it my top recommendation.`
-    },
 ];
 
 
