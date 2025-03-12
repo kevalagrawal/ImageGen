@@ -83,7 +83,7 @@ const Login = () => {
             className="border border-gray-600 px-5 py-2 flex items-center gap-3 rounded-full mt-5 bg-gray-800 focus-within:border-blue-500 transition-all"
             whileFocus={{ scale: 1.02 }}
           >
-            <img src={assets.user_icon} alt="" className="w-5 opacity-80" />
+            <img src={assets.user_icon1} alt="" className="w-5 opacity-80" />
             <input
               onChange={(e) => setName(e.target.value)}
               value={name}
