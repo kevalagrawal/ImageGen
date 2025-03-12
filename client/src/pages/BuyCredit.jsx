@@ -111,7 +111,7 @@ const BuyCredit = () => {
               LIMITED OFFER
             </motion.div>
 
-            <img width={40} src={assets.logo_icon} alt="" />
+            <img width={50} src={assets.eye} alt="" />
             <p className='mt-3 mb-1 font-semibold'>{item.id}</p>
             <p className='text-sm'>{item.desc}</p>
             <p className='mt-6'>

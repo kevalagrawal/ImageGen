@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 612 792">
-  <!-- Generator: Adobe Illustrator 29.5.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 15)  -->
+<svg 
+    id="Layer_1" 
+    xmlns="http://www.w3.org/2000/svg" 
+    version="1.1" 
+    width="400" 
+    height="400" 
+    viewBox="80 0 400 400"  
+    style="display: block; margin: auto;"
+>
   <defs>
     <style>
       .st0 {
@@ -26,22 +33,24 @@
 
       .st4 {
         fill: none;
-        stroke-width: 20px;
+        stroke-width: 10px;
       }
     </style>
   </defs>
-  <path class="st3" d="M43.86,69.79l51.95-34.44c5.95-3.94,13.68-3.94,19.62.02l51.73,34.42c4.94,3.29,7.91,8.83,7.91,14.76v54.88c0,6.02-3.05,11.63-8.11,14.9l-51.81,33.46c-5.87,3.79-13.42,3.78-19.28-.02l-51.87-33.69c-5.04-3.27-8.07-8.87-8.07-14.87v-54.64c0-5.95,2.98-11.5,7.93-14.78Z"/>
-  <circle class="st0" cx="105.55" cy="111.61" r="28.68"/>
-  <ellipse class="st2" cx="95.12" cy="101.47" rx="10.66" ry="8.51" transform="translate(-38.53 139.96) rotate(-62.92)"/>
-  <circle class="st4" cx="105.5" cy="111.56" r="38.55"/>
-  <g>
-    <rect class="st1" x="36.61" y="108.34" width="17.01" height="5.36"/>
-    <rect class="st1" x="36.61" y="116.53" width="17.01" height="2.72"/>
+  <g transform="translate(20, 20) scale(1.8)"> <!-- Centered and scaled properly -->
+    <path class="st3" d="M43.86,69.79l51.95-34.44c5.95-3.94,13.68-3.94,19.62.02l51.73,34.42c4.94,3.29,7.91,8.83,7.91,14.76v54.88c0,6.02-3.05,11.63-8.11,14.9l-51.81,33.46c-5.87,3.79-13.42,3.78-19.28-.02l-51.87-33.69c-5.04-3.27-8.07-8.87-8.07-14.87v-54.64c0-5.95,2.98-11.5,7.93-14.78Z"/>
+    <circle class="st0" cx="105.55" cy="111.61" r="28.68"/>
+    <ellipse class="st2" cx="95.12" cy="101.47" rx="10.66" ry="8.51" transform="translate(-38.53 139.96) rotate(-62.92)"/>
+    <circle class="st4" cx="105.5" cy="111.56" r="38.55"/>
+    <g>
+      <rect class="st1" x="36.61" y="108.34" width="17.01" height="5.36"/>
+      <rect class="st1" x="36.61" y="116.53" width="17.01" height="2.72"/>
+    </g>
+    <g>
+      <rect class="st1" x="157.39" y="107.29" width="17.01" height="5.36"/>
+      <rect class="st1" x="157.39" y="115.23" width="17.01" height="2.72"/>
+    </g>
+    <circle class="st1" cx="105.5" cy="48.7" r="6.3"/>
+    <circle class="st1" cx="105.55" cy="176.36" r="6.3"/>
   </g>
-  <g>
-    <rect class="st1" x="157.39" y="107.29" width="17.01" height="5.36"/>
-    <rect class="st1" x="157.39" y="115.23" width="17.01" height="2.72"/>
-  </g>
-  <circle class="st1" cx="105.5" cy="48.7" r="6.3"/>
-  <circle class="st1" cx="105.55" cy="176.36" r="6.3"/>
 </svg>
