@@ -22,34 +22,35 @@ const Navbar = () => {
             <div>
                 {user ? (
                     <div className='flex items-center gap-3 sm:gap-4'>
-                        {/* Credits Button */}
-                        <button 
-                            onClick={() => navigate('/buy')} 
-                            className='flex items-center gap-2 bg-blue-100 px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:scale-105 transition-all duration-300'
-                        >
-                            <img className='w-5' src={assets.credit_star} alt="" />
-                            <p className='text-xs sm:text-xs font-medium text-gray-600'>
-                                Credits left: {credit}
-                            </p>
-                        </button>
-
-                        {/* Greeting */}
-                        <p className='text-gray-600 max-sm:hidden pl-4'>
-                            Hi, {user.name}
+                    {/* Credits Button */}
+                    <button 
+                        onClick={() => navigate('/buy')} 
+                        className='flex flex-nowrap items-center gap-2 bg-blue-100 px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:scale-105 transition-all duration-300'
+                    >
+                        <img className='w-5' src={assets.credit_star} alt="" />
+                        <p className='text-xs sm:text-sm font-medium text-gray-600 whitespace-nowrap'>
+                            Credits left: <span className='inline-block'>{credit}</span>
                         </p>
-
-                        {/* Profile Icon with Dropdown */}
-                        <div className='relative group'>
-                            <img className='w-10 drop-shadow cursor-pointer' src={assets.profile_icon} alt="" />
-                            <div className='absolute hidden group-hover:block top-0 right-0 z-10 text-black pt-12'>
-                                <ul className='list-none m-0 p-2 bg-white rounded-md border text-sm'>
-                                    <li onClick={logout} className='py-1 px-2 cursor-pointer pr-10 hover:bg-gray-100'>
-                                        Logout
-                                    </li>
-                                </ul>
-                            </div>
+                    </button>
+                
+                    {/* Greeting */}
+                    <p className='text-gray-600 max-sm:hidden pl-4'>
+                        Hi, {user.name}
+                    </p>
+                
+                    {/* Profile Icon with Dropdown */}
+                    <div className='relative group'>
+                        <img className='w-10 drop-shadow cursor-pointer' src={assets.profile_icon} alt="" />
+                        <div className='absolute hidden group-hover:block top-0 right-0 z-10 text-black pt-12'>
+                            <ul className='list-none m-0 p-2 bg-white rounded-md border text-sm'>
+                                <li onClick={logout} className='py-1 px-2 cursor-pointer pr-10 hover:bg-gray-100'>
+                                    Logout
+                                </li>
+                            </ul>
                         </div>
                     </div>
+                </div>
+                
                 ) : (
                     <div className='flex items-center gap-4 sm:gap-6'>
                         {/* Pricing Link */}
