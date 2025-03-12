@@ -19,6 +19,8 @@ import star_group from './star_group.png'
 import credit_star from './credit_star.svg'
 import please from './please.jpg'
 import dhruv from './dhruv1.jpg'
+import camera2 from './camera2.svg'
+import logo2 from './logo2.svg'
 import profile_icon from './profile_icon.png'
 import razorpay_logo from './razorpay_logo.png'
 import stripe_logo from './stripe_logo.png'
@@ -33,6 +35,7 @@ import download9 from './download (9).png'
 
 export const assets = {
     logo,
+    logo2,
     logo_icon,
     facebook_icon,
     instagram_icon,
@@ -45,6 +48,7 @@ export const assets = {
     email_icon,
     lock_icon,
     cross_icon,
+    camera2,
     star_group,
     credit_star,
     profile_icon,
