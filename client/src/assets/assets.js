@@ -88,8 +88,8 @@ export const stepsData = [
   export const testimonialsData = [
     {
         image: profile_img_2,
-        name: 'Keval Agrawal',
-        role: 'Frontend Developer',
+        name: 'Om Patel',
+        role: 'Backend Developer',
         stars: 5,
         text: `Image_Gen has been a game-changer for my projects. The seamless background removal allows me to create clean, professional designs in seconds without relying on complex software.`
     },
