@@ -94,14 +94,14 @@ export const stepsData = [
         text: `Image_Gen has been a game-changer for my projects. The seamless background removal allows me to create clean, professional designs in seconds without relying on complex software.`
     },
     {
-        image: dhruv,
+        image: profile_img_1,
         name: 'Dhruv Soni',
         role: 'Frontend Developer',
         stars: 5,
         text: `As someone who works with various web applications, integrating Image_Gen images was straightforward and efficient. The speed and accuracy of the service make it an essential tool for automation.`
     },
     {
-        image: profile_img_1,
+        image: profile_img_2,
         name: 'Harsh Moreshwar',
         role: 'Tester',
         stars: 5,

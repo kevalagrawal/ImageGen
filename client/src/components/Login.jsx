@@ -128,9 +128,15 @@ const Login = () => {
         </motion.div>
 
         {/* Forgot Password */}
+        {state === "Login" ?
         <p className="text-sm text-blue-400 my-4 text-right cursor-pointer hover:underline transition">
           Forgot password?
         </p>
+        :
+        <p className="text-sm text-blue-400 my-4 text-right cursor-pointer hover:underline transition hidden">
+          Forgot password?
+        </p>
+}
 
         {/* Submit Button */}
         <motion.button
