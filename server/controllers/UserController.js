@@ -2,6 +2,8 @@ import userModel from "../models/userModel.js"
 import transactionModel from "../models/transactionModel.js"
 import razorpay from 'razorpay';
 import bcrypt from 'bcrypt'
+import nodemailer from 'nodemailer'
+import crypto from 'crypto'
 import jwt from 'jsonwebtoken'
 // import stripe from "stripe";
 
@@ -199,6 +201,107 @@ const verifyRazorpay = async (req, res) => {
     }
 }
 
+
+const forgotPassword = async (req, res) => {
+    const { email } = req.body;
+  
+    try {
+      // Check if the email exists in the database
+      const user = await userModel.findOne({ email });
+      if (!user) {
+        return res.status(404).json({ success:false,error: 'Email not found' });
+      }
+  
+      // Generate a temporary password (8 characters)
+    const tempPassword = Math.random().toString(36).slice(-8);
+  
+      // Hash the temporary password using bcrypt
+    const hashedPassword = await bcrypt.hash(tempPassword, 10);
+    
+    // Update the user's password in the database
+    user.password = hashedPassword;
+    await user.save();
+  
+      // Send the new password to the user's email using Nodemailer
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'globaltrek39@gmail.com', // your Gmail address
+          pass: 'dzqu pzwu yryk nmsw', // your Gmail app password
+        },
+      });
+  
+      const mailOptions = {
+        from: 'globaltrek39@gmail.com',
+        to: email,
+        subject: 'Password Reset - ImageGen',
+        html: `
+          <div style="
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            color: #333;
+            text-align: center;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+          ">
+            <h2 style="color: #007bff; font-size: 24px;">🚀 Password Reset - ImageGen</h2>
+            <p style="font-size: 16px; margin-bottom: 20px;">
+              Your new password is:
+              <span style="
+                display: inline-block;
+                background-color: #e0e0e0;
+                padding: 10px;
+                border-radius: 5px;
+                font-weight: bold;
+                color: #333;
+                margin-top: 10px;
+              ">${tempPassword}</span>
+            </p>
+            <img src="https://media.giphy.com/media/3o7TKU8RvQuomFfUUU/giphy.gif" 
+              alt="Thank you animation"
+              style="width: 100%; max-width: 200px; border-radius: 10px; margin-top: 10px;"
+            />
+            <p style="
+              font-size: 14px;
+              color: #555;
+              margin-top: 20px;
+            ">
+              Thank you for using <strong>ImageGen</strong>! If you didn’t request this, please ignore this email.
+            </p>
+            <a href="https://globaltrekc.onrender.com" 
+              style="
+                display: inline-block;
+                background-color: #007bff;
+                color: #fff;
+                padding: 10px 20px;
+                text-decoration: none;
+                border-radius: 5px;
+                margin-top: 10px;
+                font-size: 14px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+              "
+              target="_blank"
+            >
+              Go to ImageGen
+            </a>
+          </div>
+        `,
+      };
+      
+  
+      await transporter.sendMail(mailOptions);
+  
+      res.json({ success:true,message: 'Password reset email sent successfully.' });
+    } catch (error) {
+      console.error('Error resetting password:', error);
+      res.status(500).json({success:false, error: 'Internal server error' });
+    }
+  };
+
+
 // Stripe Gateway Initialize
 // const stripeInstance = new stripe(process.env.STRIPE_SECRET_KEY)
 
@@ -319,4 +422,4 @@ const verifyRazorpay = async (req, res) => {
 // }
 
 
-export { registerUser, loginUser, userCredits, paymentRazorpay, verifyRazorpay }
+export { registerUser, loginUser, userCredits, paymentRazorpay, verifyRazorpay, forgotPassword }

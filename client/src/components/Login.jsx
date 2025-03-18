@@ -7,12 +7,14 @@ import { motion } from "framer-motion";
 
 const Login = () => {
   const [state, setState] = useState("Login");
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [isForgotPassword, setIsForgotPassword] = useState(false); // New state
 
   const { backendUrl, setShowLogin, setToken, setUser } = useContext(AppContext);
 
+  // Handle Login or Sign Up Submission
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -26,11 +28,29 @@ const Login = () => {
         setUser(data.user);
         localStorage.setItem("token", data.token);
         setShowLogin(false);
+        toast.success(`${state} successful!`);
       } else {
         toast.error(data.message);
       }
     } catch (error) {
       toast.error(error.message);
+    }
+  };
+
+  // Handle Forgot Password Submission
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post(`${backendUrl}/api/user/forgot-password`, { email });
+
+      if (data.success) {
+        toast.success("Password reset email sent successfully. Please check your spam folder.");
+        setIsForgotPassword(false); // Close the forgot password form after success
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error("Failed to send password reset email.");
     }
   };
 
@@ -48,9 +68,9 @@ const Login = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      {/* Login Box */}
+      {/* FORM CONTAINER */}
       <motion.form
-        onSubmit={onSubmitHandler}
+        onSubmit={isForgotPassword ? handleForgotPassword : onSubmitHandler}
         className="relative bg-[#1A1D2E] p-8 md:p-10 rounded-2xl text-white shadow-2xl max-w-sm w-full backdrop-blur-lg transition-all duration-300"
         initial={{ scale: 0.7, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -71,14 +91,16 @@ const Login = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
-          {state}
+          {isForgotPassword ? "Forgot Password" : state}
         </motion.h1>
         <p className="text-sm text-gray-300 text-center">
-          Welcome! Please {state.toLowerCase()} to continue.
+          {isForgotPassword
+            ? "Enter your email to reset your password."
+            : `Welcome! Please ${state.toLowerCase()} to continue.`}
         </p>
 
         {/* Name Field (Only for Sign Up) */}
-        {state !== "Login" && (
+        {!isForgotPassword && state !== "Login" && (
           <motion.div
             className="border border-gray-600 px-4 py-2 flex items-center gap-3 rounded-full mt-5 bg-gray-800 focus-within:border-blue-500 transition-all"
             whileFocus={{ scale: 1.02 }}
@@ -112,31 +134,32 @@ const Login = () => {
         </motion.div>
 
         {/* Password Field */}
-        <motion.div
-          className="border border-gray-600 px-4 py-2 flex items-center gap-3 rounded-full mt-4 bg-gray-800 focus-within:border-blue-500 transition-all"
-          whileFocus={{ scale: 1.02 }}
-        >
-          <img src={assets.lock_icon} alt="Password" className="w-4 md:w-5 opacity-80" />
-          <input
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            className="outline-none text-sm md:text-base bg-transparent flex-1 placeholder-gray-400 text-white"
-            type="password"
-            placeholder="Password"
-            required
-          />
-        </motion.div>
+        {!isForgotPassword && (
+          <motion.div
+            className="border border-gray-600 px-4 py-2 flex items-center gap-3 rounded-full mt-4 bg-gray-800 focus-within:border-blue-500 transition-all"
+            whileFocus={{ scale: 1.02 }}
+          >
+            <img src={assets.lock_icon} alt="Password" className="w-4 md:w-5 opacity-80" />
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              className="outline-none text-sm md:text-base bg-transparent flex-1 placeholder-gray-400 text-white"
+              type="password"
+              placeholder="Password"
+              required
+            />
+          </motion.div>
+        )}
 
-        {/* Forgot Password */}
-        {state === "Login" ?
-        <p className="text-sm text-blue-400 my-4 text-right cursor-pointer hover:underline transition">
-          Forgot password?
-        </p>
-        :
-        <p className="text-sm text-blue-400 my-4 text-right cursor-pointer hover:underline transition hidden">
-          Forgot password?
-        </p>
-}
+        {/* Forgot Password Link */}
+        {!isForgotPassword && state === "Login" && (
+          <p
+            className="text-sm text-blue-400 my-4 text-right cursor-pointer hover:underline transition"
+            onClick={() => setIsForgotPassword(true)}
+          >
+            Forgot password?
+          </p>
+        )}
 
         {/* Submit Button */}
         <motion.button
@@ -144,31 +167,8 @@ const Login = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          {state === "Login" ? "Login" : "Create Account"}
+          {isForgotPassword ? "Reset Password" : state === "Login" ? "Login" : "Create Account"}
         </motion.button>
-
-        {/* Toggle Between Login & Sign Up */}
-        {state === "Login" ? (
-          <p className="mt-5 text-center text-gray-300">
-            Don't have an account?{" "}
-            <span
-              onClick={() => setState("Sign Up")}
-              className="text-blue-400 cursor-pointer hover:underline"
-            >
-              Sign up
-            </span>
-          </p>
-        ) : (
-          <p className="mt-5 text-center text-gray-300">
-            Already have an account?{" "}
-            <span
-              onClick={() => setState("Login")}
-              className="text-blue-400 cursor-pointer hover:underline"
-            >
-              Login
-            </span>
-          </p>
-        )}
       </motion.form>
     </motion.div>
   );
