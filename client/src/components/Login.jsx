@@ -10,7 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [isForgotPassword, setIsForgotPassword] = useState(false); // New state
+  const [isForgotPassword, setIsForgotPassword] = useState(false);
 
   const { backendUrl, setShowLogin, setToken, setUser } = useContext(AppContext);
 
@@ -45,7 +45,7 @@ const Login = () => {
 
       if (data.success) {
         toast.success("Password reset email sent successfully. Please check your spam folder.");
-        setIsForgotPassword(false); // Close the forgot password form after success
+        setIsForgotPassword(false);
       } else {
         toast.error(data.message);
       }
@@ -161,14 +161,41 @@ const Login = () => {
           </p>
         )}
 
+
         {/* Submit Button */}
         <motion.button
           className="bg-blue-500 w-full text-white font-bold py-2 rounded-full text-lg mt-4 shadow-md hover:bg-blue-400 transition duration-300"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-        >
+          >
           {isForgotPassword ? "Reset Password" : state === "Login" ? "Login" : "Create Account"}
         </motion.button>
+          {/* New Conditional Links */}
+          {!isForgotPassword && (
+            <p className="text-center text-lg text-sm text-gray-400 mt-4">
+              {state === "Login" ? (
+                <>
+                  Don't have an account?{" "}
+                  <span
+                    onClick={() => setState("Sign Up")}
+                    className="text-blue-400 cursor-pointer hover:underline"
+                  >
+                    Sign up
+                  </span>
+                </>
+              ) : (
+                <>
+                  Have an account?{" "}
+                  <span
+                    onClick={() => setState("Login")}
+                    className="text-blue-400 cursor-pointer hover:underline"
+                  >
+                    Login
+                  </span>
+                </>
+              )}
+            </p>
+          )}
       </motion.form>
     </motion.div>
   );
