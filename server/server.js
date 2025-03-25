@@ -5,7 +5,7 @@ import userRouter from './routes/userRoutes.js';
 import connectDB from './configs/mongodb.js';
 import imageRouter from './routes/imageRoutes.js';
 
-import job from "./configs/cron.js"
+import {job} from "./configs/cron.js"
 
 // App Config
 const PORT = process.env.PORT || 4000
