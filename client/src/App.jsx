@@ -11,6 +11,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Login from './components/Login'
 import { AppContext } from './context/AppContext'
+import Users from './pages/Users'
+import Transactions from './pages/Transactions.jsx'
 // import Verify from './pages/Verify'
 
 const App = () => {
@@ -26,6 +28,8 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/result' element={<Result />} />
         <Route path='/buy' element={<BuyCredit />} />
+        <Route path='/users' element={<Users />} />
+        <Route path="/transactions" element={<Transactions />} />
         {/* <Route path='/verify' element={<Verify />} /> */}
       </Routes>
       <Footer />

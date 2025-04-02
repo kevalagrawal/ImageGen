@@ -13,6 +13,8 @@ const AppContextProvider = (props) => {
 
     const [credit, setCredit] = useState(false)
 
+    const [transactions, setTransactions] = useState([]);
+
     const backendUrl = import.meta.env.VITE_BACKEND_URL
     const navigate = useNavigate()
 
@@ -58,6 +60,27 @@ const AppContextProvider = (props) => {
         setUser(null)
     }
 
+    const fetchUserCount = async () => {
+        try {
+            const response = await axios.get(`${backendUrl}/api/users/count`);
+            // const data = await response.json();
+            return response.data;
+        } catch (error) {
+            toast.error(error.message);
+        }
+    };
+    
+    const fetchTransactionCount = async () => {
+        try {
+            const response = await axios.get(`${backendUrl}/api/transactions/details`);
+            return response.data;
+        } catch (error) {
+            console.error("Error fetching transaction count:", error);
+            toast.error("Failed to fetch transaction data. Please try again.");
+            return []; // Return an empty array to prevent crashes in case of an error
+        }
+    };
+    
     useEffect(()=>{
         if (token) {
             loadCreditsData()
@@ -72,7 +95,9 @@ const AppContextProvider = (props) => {
         loadCreditsData,
         backendUrl,
         generateImage,
-        logout
+        logout,
+        fetchUserCount,
+        fetchTransactionCount,
     }
 
     return (
