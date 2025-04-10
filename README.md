@@ -40,3 +40,4 @@ Pull requests are welcome! Please fork the repository and open a PR with your pr
 ## Contact
 
 Created by GlobalTrek - feel free to reach out with questions or suggestions!
+Email : globaltrek39@gmail.com
