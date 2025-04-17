@@ -6,6 +6,8 @@ import connectDB from './configs/mongodb.js';
 import imageRouter from './routes/imageRoutes.js';
 import transactionModel from './models/transactionModel.js';
 import userModel from './models/userModel.js';
+import { SitemapStream, streamToPromise } from 'sitemap';
+import { Readable } from 'stream';
 
 import {job} from "./configs/cron.js"
 
@@ -80,6 +82,17 @@ app.get("/api/transactions/details", async (req, res) => {
       res.status(500).json({ error: err.message });
   }
 });
+
+app.get('/sitemap.xml', (req, res) => {
+  const links = [
+    { url: '/', changefreq: 'daily', priority: 1.0 },
+    { url: '/about', changefreq: 'monthly', priority: 0.7 },
+  ];
+  const stream = new SitemapStream({ hostname: 'https://globaltrekc.onrender.com' });
+  res.header('Content-Type', 'application/xml');
+  const xmlStream = streamToPromise(Readable.from(links).pipe(stream)).then(data => res.send(data));
+});
+
 
 
 app.get('/', (req,res) => res.send("API Working"))
