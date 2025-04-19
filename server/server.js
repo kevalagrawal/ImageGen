@@ -88,7 +88,7 @@ app.get('/sitemap.xml', (req, res) => {
     { url: '/', changefreq: 'daily', priority: 1.0 },
     { url: '/about', changefreq: 'monthly', priority: 0.7 },
   ];
-  const stream = new SitemapStream({ hostname: 'https://globaltrekc.vercel.app' });
+  const stream = new SitemapStream({ hostname: 'https://globaltrekc.vercel.app/' });
   res.header('Content-Type', 'application/xml');
   const xmlStream = streamToPromise(Readable.from(links).pipe(stream)).then(data => res.send(data));
 });
