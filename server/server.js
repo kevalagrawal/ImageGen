@@ -23,7 +23,7 @@ app.use(
   cors({
     origin: (origin, callback) => {
       // Allow both the production and local origin
-      if (origin === 'https://globaltrekc.onrender.com' || origin === 'http://localhost:5173' || !origin) {
+      if (origin === 'https://globaltrekc.vercel.app' || origin === 'https://globaltrekc.onrender.com' || origin === 'http://localhost:5173' || !origin) {
         callback(null, true); // allow the origin
       } else {
         callback(new Error('Not allowed by CORS'), false);
